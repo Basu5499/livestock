@@ -1,9 +1,10 @@
 import React from 'react';
-
+import pic from '/home/basu/Downloads/Livestock/src/images/I1.jpg'
+import '/home/basu/Downloads/Livestock/src/pages/Animal.css';
 const Dashboard = () => {
     return (
         <div>
-            <h1>dashboard page</h1>
+           <img src={pic} className='pic' alt=''/>
         </div>
     );
 };

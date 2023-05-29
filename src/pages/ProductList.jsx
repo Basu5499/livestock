@@ -33,7 +33,7 @@ const ProductList = () => {
 
   return (
     <div>
-      <h1>Task List</h1>
+      <h1>Product List</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
