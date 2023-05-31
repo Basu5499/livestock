@@ -1,0 +1,35 @@
+table,tr,td,th{
+    border: 1px solid black;
+    border-collapse:collapse ;
+    padding: 5px;
+  }
+  table{
+    width: 100%;
+    text-align: center;
+  }
+  
+  .create{
+    background-color: green;
+    color: white;
+    padding: 5px;
+    width: 80px;
+    float: right;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
+  .edit{
+    background-color: green;
+    color: white;
+    width: 70px;
+    padding: 5px;
+    border-radius: 6px;
+
+  }
+  .delete{
+    background-color:red;
+    color: white;
+    width: 70px;
+    padding: 5px;
+    border-radius: 6px;
+
+  }

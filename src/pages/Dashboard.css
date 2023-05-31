@@ -1,0 +1,17 @@
+  .search{
+    padding: 5px;
+    float: right;
+    width: 240px;
+  }
+  .b1{
+    padding: 5px;
+    background-color:navy;
+    float:right;
+    color: white;
+    width: 80px;
+  }
+  .pic{
+    width:100%;
+    padding: 2px;
+    height:97%;
+  }

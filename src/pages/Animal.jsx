@@ -1,134 +1,106 @@
-import React, { Component } from 'react';
-import '/home/basu/Downloads/Livestock/src/pages/Animal.css';
+import axios from "axios";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
+import '/home/basu/Downloads/Livestock/src/pages/Animal.css'
 
-class Animal extends Component {
+const Animal = () => {
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [breed, setBreed]=useState("");
+  const [sex, setSex ] = useState("");
+  const [intId, setIntId] = useState("");
+  const [status,setStatus]=useState("");
+ 
+  const history = useNavigate();
 
-  constructor(props){
-    super(props);
-    this.state={
-      title: 'Add Animal Details',
-      act: 0,
-      index: '',
-      datas: []
-    }
-  } 
-
-  componentDidMount(){
-    this.refs.name.focus();
-  }
-
-  fSubmit = (e) =>{
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('try');
+    console.log("clciekd");
+    axios
+      .post("https://64745e697de100807b1ac11a.mockapi.io/live/livestock", {
+        name: name,
+        type: type,
+        breed: breed,
+        sex: sex,
+        intId: intId,
+        status: status
 
-    let datas = this.state.datas;
-    let name = this.refs.name.value;
-    let breed = this.refs.breed.value;
-    let sex =this.refs.sex.value;
-    let dob =this.refs.dob.value;
+      })
+      .then(() => {
+        history("/read");
+      });
+  };
 
-    if(this.state.act === 0){   //new
-      let data = {
-        name, breed, sex,dob
-      }
-      datas.push(data);
-    }else{                      //update
-      let index = this.state.index;
-      datas[index].name = name;
-      datas[index].breed = breed;
-      datas[index].sex=sex;
-      datas[index].dob=dob;
-    }    
-
-    this.setState({
-      datas: datas,
-      act: 0
-    });
-
-    this.refs.myForm.reset();
-    this.refs.name.focus();
-  }
-
-  fRemove = (i) => {
-    let datas = this.state.datas;
-    datas.splice(i,1);
-    this.setState({
-      datas: datas
-    });
-
-    this.refs.myForm.reset();
-    this.refs.name.focus();
-  }
-
-  fEdit = (i) => {
-    let data = this.state.datas[i];
-    this.refs.name.value = data.name;
-    this.refs.breed.value = data.breed;
-    this.refs.sex.value = data.sex;
-    this.refs.dob.value = data.dob;
-    this.setState({
-      act: 1,
-      index: i
-    });
-
-    this.refs.name.focus();
-  }  
-
-  render() {
-    let datas = this.state.datas;
-    return (
-      <div className="App">
-        <h2 className='title'>{this.state.title}</h2>
-        <form ref="myForm" className="myForm">
-          <h3>Basic Information</h3>
-          <br></br>
-          <label>Animal Name<input type="text" ref="name" placeholder="Animal name" className="formField" required/></label>
-          <label className='label1'>Breed<input type="text" ref="breed" placeholder="Breed" className="formField" /></label>
-          <label className='label1'>Sex
-            <select className="formField" ref="sex">
-            <option>Select</option>
-            <option>Male</option>
-            <option>Female</option>
-          </select></label>
-     <div className='div2'>
-          <label>Date Of Birth<input type="date" ref="dob"  className="formField" /></label>
-          </div>
-          <button onClick={(e)=>this.fSubmit(e)} className="myButton">submit </button>
-        </form>
-      
-        <pre>
-        <table>
-                    <tr>
-                        <th>Sr.No</th>
-                        <th>Name</th>
-                        <th>Breed</th>
-                        <th>Sex</th>
-                        <th>Date Of Birth</th>
-                    </tr>
-                    </table>
-          {datas.map((data, i) =>
-            <li key={i} className="myList">
-                    <table>
-                    <tr>
-                        <td>{i+1}</td>
-                        <td>{data.name}</td>
-                        <td>{data.breed}</td>
-                        <td>{data.sex}</td>
-                        <td>{data.dob}</td>
-                    
-              <div className='bb'>
-              <button onClick={()=>this.fRemove(i)} className="myListButton">Delete </button>
-              <button onClick={()=>this.fEdit(i)} className="myListButton1">Edit </button>
-              </div>
-              </tr>
-              </table>
-             
-            </li>
-          )}
-        </pre>
+  return (
+    <>
+      <div className="d-flex justify-content-between m-2">
+        <h2 className="head">Add Animal Details</h2>
+       
       </div>
-    );
-  }
-}
+      <form className="form">
+        <h3>Basic Information</h3>
+        <div className="mb-3">
+          <label className="form-label">Name</label>
+       <input
+            type="text"
+            className="form-control"
+            onChange={(e) => setName(e.target.value)}
+          />
+     
+          <label className="form-label">Animal Type</label>
+       
+         <select  className="form-control" onChange={(e) => setType(e.target.value)}>
+          <option>Select</option>
+            <option>Buffalo</option>
+            <option>Cat</option>
+            <option>Chicken</option>
+            <option>Cow</option>
+            <option>Dog</option>
+            <option>Goat</option>
+            <option>Sheep</option>
+          </select>
+          <label className="form-label">Breed</label>
+          <input
+            type="text"
+            className="form-control"
+            onChange={(e) => setBreed(e.target.value)}
+          />
+          </div>
+          <br></br>
+       <div>
+       <label className="form-label1">Sex</label>
+       <select className="form-control"
+            onChange={(e) => setSex(e.target.value)}>
+        <option>Select</option>
+        <option>Male</option>
+        <option>Female</option>
+       </select>
+          <label className="form-l1">Status</label>
+          <select className="form-control" onChange={(e) => setStatus(e.target.value)}>
+          <option>Select</option>
+          <option>Active</option>
+          <option>For Sale</option>
+          <option>Lost</option>
+          <option>Sick</option>
+          <option>Sold</option>
+          </select><label className="form-label">Internal Id</label>
+          <input
+            type="text"
+            className="form-control"
+            onChange={(e) => setIntId(e.target.value)}
+          />
+       </div>
+<div className="btn1">
+        <button type="submit" className="btn" onClick={handleSubmit}> Submit
+        </button>
+        <Link to="/read">
+          <button className="btn">Show Data</button>
+        </Link>
+        </div>
+      </form>
+    </>
+  );
+};
 
 export default Animal;

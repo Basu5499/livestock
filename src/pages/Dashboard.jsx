@@ -1,11 +1,17 @@
 import React from 'react';
-import pic from '/home/basu/Downloads/Livestock/src/images/I1.jpg'
-import '/home/basu/Downloads/Livestock/src/pages/Animal.css';
+import './Dashboard.css'
+import pic from '/home/basu/Downloads/Livestock/src/images/i1.jpg'
+
 const Dashboard = () => {
     return (
-        <div>
-           <img src={pic} className='pic' alt=''/>
-        </div>
+        <>
+           <form>
+  <button className='b1'>Search</button>
+  <input type='text'  placeholder='Search' className='search'/>
+ 
+</form>
+    <img src={pic} alt='' className='pic'/>
+        </>
     );
 };
 

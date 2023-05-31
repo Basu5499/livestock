@@ -56,6 +56,7 @@ const Sidebar = ({children}) => {
                    <div style={{marginLeft: isOpen ? "50px" : "0px"}} className="bars">
                        <FaBars onClick={toggle}/>
                    </div>
+                
                </div>
                {
                    menuItem.map((item, index)=>(
