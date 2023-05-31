@@ -48,18 +48,13 @@ const Animal = () => {
             onChange={(e) => setName(e.target.value)}
           />
      
-          <label className="form-label">Animal Type</label>
-       
-         <select  className="form-control" onChange={(e) => setType(e.target.value)}>
-          <option>Select</option>
-            <option>Buffalo</option>
-            <option>Cat</option>
-            <option>Chicken</option>
-            <option>Cow</option>
-            <option>Dog</option>
-            <option>Goat</option>
-            <option>Sheep</option>
-          </select>
+     <label className="form-label">Internal Id</label>
+          <input
+            type="text"
+            className="form-control"
+            onChange={(e) => setIntId(e.target.value)}
+          />
+         
           <label className="form-label">Breed</label>
           <input
             type="text"
@@ -69,6 +64,17 @@ const Animal = () => {
           </div>
           <br></br>
        <div>
+       <label className="form-label">Animal Type</label>
+       <select  className="form-control" onChange={(e) => setType(e.target.value)}>
+        <option>Select</option>
+          <option>Buffalo</option>
+          <option>Cat</option>
+          <option>Chicken</option>
+          <option>Cow</option>
+          <option>Dog</option>
+          <option>Goat</option>
+          <option>Sheep</option>
+        </select>
        <label className="form-label1">Sex</label>
        <select className="form-control"
             onChange={(e) => setSex(e.target.value)}>
@@ -76,7 +82,7 @@ const Animal = () => {
         <option>Male</option>
         <option>Female</option>
        </select>
-          <label className="form-l1">Status</label>
+          <label className="form-label1">Status</label>
           <select className="form-control" onChange={(e) => setStatus(e.target.value)}>
           <option>Select</option>
           <option>Active</option>
@@ -84,12 +90,8 @@ const Animal = () => {
           <option>Lost</option>
           <option>Sick</option>
           <option>Sold</option>
-          </select><label className="form-label">Internal Id</label>
-          <input
-            type="text"
-            className="form-control"
-            onChange={(e) => setIntId(e.target.value)}
-          />
+          </select>
+          
        </div>
 <div className="btn1">
         <button type="submit" className="btn" onClick={handleSubmit}> Submit
